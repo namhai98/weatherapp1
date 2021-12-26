@@ -6,6 +6,7 @@ import 'package:few/Views/current_weather.dart';
 import 'package:few/services/weather_api_client.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 void main() => runApp(MaterialApp(home: Home()));
 
@@ -20,8 +21,8 @@ class _DetailState extends State<Detail> {
   WeatherApiClient client = WeatherApiClient();
   Weather? data;
 
-  Future<void> getData() async{
-    data = await client.getCurrentWeather("Georgia");
+  Future<void> getData() async {
+    data = await client.getCurrentWeather("London");
   }
 
   @override
@@ -50,13 +51,10 @@ class Home extends StatelessWidget {
       ),
       body: FutureBuilder(
         future: getData(),
-        builder: (context, snapshot){
-          if(snapshot.connectionState == ConnectionState.done){
-            return
-          }
+        builder: (context, snapshot) {
           return Container();
         },
-      )
+      ),
     );
   }
 }
