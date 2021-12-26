@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:few/Model/weather_model.dart';
+import 'package:few/MyHomePage.dart';
 import 'package:few/Views/additional_imformation.dart';
 import 'package:few/Views/current_weather.dart';
 import 'package:few/services/weather_api_client.dart';
@@ -8,7 +9,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
-void main() => runApp(MaterialApp(home: Home()));
+void main() => runApp(MaterialApp(home: MyHomePage()));
 
 class Detail extends StatefulWidget {
   const Detail({Key? key}) : super(key: key);
@@ -27,15 +28,6 @@ class _DetailState extends State<Detail> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
-  }
-}
-
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFf9f9f9),
       appBar: AppBar(
@@ -45,13 +37,14 @@ class Home extends StatelessWidget {
         centerTitle: true,
         leading: IconButton(
           onPressed: () {},
-          icon: Icon(Icons.menu),
+          icon: Icon(Icons.arrow_back_ios),
           color: Colors.black,
         ),
       ),
       body: FutureBuilder(
         future: getData(),
         builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.done) {}
           return Container();
         },
       ),
