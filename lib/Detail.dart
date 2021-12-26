@@ -9,6 +9,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 
+import 'package:few/MyHomePage.dart';
+
 void main() => runApp(MaterialApp(home: MyHomePage()));
 
 class Detail extends StatefulWidget {
@@ -23,7 +25,7 @@ class _DetailState extends State<Detail> {
   Weather? data;
 
   Future<void> getData() async {
-    data = await client.getCurrentWeather("Ulaanbaatar");
+    data = await client.getCurrentWeather("London");
   }
 
   @override
