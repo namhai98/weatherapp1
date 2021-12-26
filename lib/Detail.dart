@@ -39,7 +39,9 @@ class _DetailState extends State<Detail> {
         ),
         centerTitle: true,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
           icon: Icon(Icons.arrow_back_ios),
           color: Colors.black,
         ),
