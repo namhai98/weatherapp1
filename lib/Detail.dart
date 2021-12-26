@@ -1,5 +1,4 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:few/Model/weather_model.dart';
 import 'package:few/MyHomePage.dart';
 import 'package:few/Views/additional_imformation.dart';
@@ -8,14 +7,13 @@ import 'package:few/services/weather_api_client.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-
 import 'package:few/MyHomePage.dart';
 
 void main() => runApp(MaterialApp(home: MyHomePage()));
 
 class Detail extends StatefulWidget {
-  const Detail({Key? key}) : super(key: key);
-
+  final String myCityName;
+  const Detail(this.myCityName);
   @override
   _DetailState createState() => _DetailState();
 }
@@ -24,8 +22,8 @@ class _DetailState extends State<Detail> {
   WeatherApiClient client = WeatherApiClient();
   Weather? data;
 
-  Future<void> getData() async {
-    data = await client.getCurrentWeather("London");
+  Future<void> getData(String dataCityName) async {
+    data = await client.getCurrentWeather(dataCityName);
   }
 
   @override
@@ -49,7 +47,7 @@ class _DetailState extends State<Detail> {
         ),
       ),
       body: FutureBuilder(
-        future: getData(),
+        future: getData(widget.myCityName),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             return Column(

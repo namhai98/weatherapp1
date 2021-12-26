@@ -72,7 +72,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Detail()));
+                                            builder: (context) =>
+                                                Detail(info[i]["name"])));
                                   },
                                   child: Text(
                                     info[i]["name"],
