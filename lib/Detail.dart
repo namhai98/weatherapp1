@@ -23,7 +23,7 @@ class _DetailState extends State<Detail> {
   Weather? data;
 
   Future<void> getData() async {
-    data = await client.getCurrentWeather("London");
+    data = await client.getCurrentWeather("Ulaanbaatar");
   }
 
   @override
@@ -33,7 +33,10 @@ class _DetailState extends State<Detail> {
       appBar: AppBar(
         backgroundColor: Color(0xFFf9f9f9),
         elevation: 0.0,
-        title: const Text("WeatherApp"),
+        title: const Text(
+          "Цаг агаар",
+          style: TextStyle(color: Colors.black),
+        ),
         centerTitle: true,
         leading: IconButton(
           onPressed: () {},
@@ -44,7 +47,36 @@ class _DetailState extends State<Detail> {
       body: FutureBuilder(
         future: getData(),
         builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {}
+          if (snapshot.connectionState == ConnectionState.done) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                currentWeather(Icons.wb_sunny_rounded, "${data!.temp}",
+                    "${data!.cityName}"),
+                SizedBox(
+                  height: 60.0,
+                ),
+                Text(
+                  "Одоогийн цаг агаарын байдал.",
+                  style: TextStyle(
+                    fontSize: 24.0,
+                    color: Color(0xdd212121),
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Divider(),
+                SizedBox(
+                  height: 20.0,
+                ),
+                additionalInformation("${data!.wind}", "${data!.humidity}",
+                    "${data!.pressure}", "${data!.feels_like}")
+              ],
+            );
+          } else if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
           return Container();
         },
       ),

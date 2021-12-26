@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
-TextStyle titleFont = TextStyle(fontWeight: FontWeight.w600,fontSize: 18.0);
-TextStyle infoFont = TextStyle(fontWeight: FontWeight.w400,fontSize: 18.0);
+
+TextStyle titleFont = TextStyle(fontWeight: FontWeight.w600, fontSize: 18.0);
+TextStyle infoFont = TextStyle(fontWeight: FontWeight.w400, fontSize: 18.0);
 
 Widget additionalInformation(
-    String wind,String humidity, String pressure, String feels_like){
+    String wind, String humidity, String pressure, String feels_like) {
   return Container(
     width: double.infinity,
     padding: EdgeInsets.all(18.0),
@@ -20,12 +21,12 @@ Widget additionalInformation(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Wind",
+                  "Салхи",
                   style: titleFont,
                 ),
                 SizedBox(height: 18.0),
                 Text(
-                  "Pressure",
+                  "Агаарын даралт",
                   style: titleFont,
                 )
               ],
@@ -36,7 +37,7 @@ Widget additionalInformation(
               children: [
                 Text(
                   "$wind",
-                  style:infoFont,
+                  style: infoFont,
                 ),
                 SizedBox(height: 18.0),
                 Text(
@@ -50,7 +51,7 @@ Widget additionalInformation(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Humidity",
+                  "Чийгшил",
                   style: titleFont,
                 ),
                 SizedBox(height: 18.0),
@@ -66,7 +67,7 @@ Widget additionalInformation(
               children: [
                 Text(
                   "$humidity",
-                  style:infoFont,
+                  style: infoFont,
                 ),
                 SizedBox(height: 18.0),
                 Text(
